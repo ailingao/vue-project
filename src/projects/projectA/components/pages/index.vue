@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import * as url from '../../../../assets/js/url';
-import couponAlert from '../../../../components/common/coupon-alert'
+import * as url from '../../../../commom/assets/js/url';
+import couponAlert from '../../../../commom/components/coupon-alert'
 export default {
     data () {
       return {

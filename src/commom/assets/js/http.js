@@ -5,9 +5,9 @@
  * @Author: ailin
  * @LastEditors: ailin
  * @Date: 2019-04-28 14:27:20
- * @LastEditTime: 2019-04-29 14:18:23
+ * @LastEditTime: 2019-04-30 17:17:58
  */
-import resource from '../../resource';
+import resource from '../../../resource';
 import * as URL from './url.js'
 export default {
     install(Vue, options) {

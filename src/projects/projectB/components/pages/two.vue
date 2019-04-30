@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <div class="main">我是第二个活动的第二个页面</div>
+    <div class="main">我是第一个活动的第二个页面</div>
     <div class="button">显示列表4445555</div>
     <h1>3333</h1>
     <div @click="getCoupon">点击领券</div>
@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import * as url from '../../../../assets/js/url.js';
-import couponAlert from '../../../../components/common/coupon-alert'
+import * as url from '../../../../commom/assets/js/url';
+import couponAlert from '../../../../commom/components/coupon-alert'
 export default {
     data () {
       return {

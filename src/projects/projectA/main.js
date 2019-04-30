@@ -7,8 +7,8 @@ import resource from '../../resource'; //通过import引入
 import VueLazyload from 'vue-lazyload';
 import vuescroll from 'vuescroll';
 // import Mock from './mockJS/mock.js';
-import BASE from '../../assets/js/global.js'; //全局公用方法
-import HTTP from '../../assets/js/http.js'; //全局公用http请求
+import BASE from '../../commom/assets/js/global.js'; //全局公用方法
+import HTTP from '../../commom/assets/js/http.js'; //全局公用http请求
 Vue.use(VueLazyload, {
     preload: 1.3, //预加载的宽高
     loading: 'https://i0.ulecdn.com/ulewap/i/290x290x2x.png',

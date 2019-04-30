@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import "../../assets/js/zepto_yl.min.js";
-import * as URL from '../../assets/js/url.js'
+import "../../commom/assets/js/zepto_yl.min.js";
+import * as URL from '../../commom/assets/js/url.js'
 (function(doc, win) { // rem 自适应
     var defaulfFontSize = '85.3333333px';
     var docEl = doc.documentElement,

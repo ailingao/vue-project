@@ -8,7 +8,7 @@
  * @Author: ailin
  * @LastEditors: ailin
  * @Date: 2019-04-29 13:17:54
- * @LastEditTime: 2019-04-29 16:13:19
+ * @LastEditTime: 2019-04-30 17:17:17
  -->
 <template>
   <div class="mask">
@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import * as url from '../../assets/js/url';
 export default {
   props:['alertData'],
     data () {
