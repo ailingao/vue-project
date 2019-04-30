@@ -16,22 +16,20 @@ npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
-```
-运行项目projectA
+
+# 运行项目projectA
 npm run d projectA
 
-打包项目projectA
+# 打包项目projectA
 npm run b projectA
 
-运行项目projectB
+# 运行项目projectB
 npm run d projectB
 
-打包项目projectB
+# 打包项目projectB
 npm run b projectB
 
-多项目配置路径config/projectConfig.js
-
-示例：
+# 多项目配置路径config/projectConfig.js 示例：
 const projectName = require('./project')
 
 const config = {
@@ -47,5 +45,7 @@ const config = {
 
 const configObj = config[projectName.name]
 module.exports = configObj
+
+```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
