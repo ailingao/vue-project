@@ -1,3 +1,12 @@
+/*
+ * @Description: 
+ * @version: 全局公用js方法，调用示例：this.BASE.getUrlStr("id")
+ * @Company: ule.com
+ * @Author: ailin
+ * @LastEditors: ailin
+ * @Date: 2019-04-30 17:05:58
+ * @LastEditTime: 2019-05-07 13:21:39
+ */
 export default {
     install(Vue, options) {
         Vue.prototype.BASE = {
@@ -277,6 +286,69 @@ export default {
                     s += '0';
                 }
                 return s;
+            },
+            //浏览器环境判断
+            $browser() {
+                var ua = navigator.userAgent.toLowerCase(),
+                    os, version;
+                if (ua.indexOf('uleapp/') > 0) {
+                    version = ua.sliceAfter('uleapp/').split('_')[3];
+                    os = ua.sliceAfter('uleapp/').sliceBefore('_');
+                    var uappType;
+                    if (ua.sliceAfter('uleapp/').split('_')[1] == 'ule') {
+                        uappType = {
+                            ule: true,
+                            ylxd: false,
+                            ios: os == 'ios',
+                            android: os == 'android',
+                            version: version
+                        }
+                    } else {
+                        uappType = {
+                            ule: false,
+                            ylxd: true,
+                            ios: os == 'ios',
+                            android: os == 'android',
+                            version: version
+                        }
+                    }
+                    return uappType;
+                } else if (ua.indexOf('ulxdapp/') > 0) {
+                    version = ua.sliceAfter('ulxdapp/').split('_')[3];
+                    os = ua.sliceAfter('ulxdapp/').sliceBefore('_');
+                    return {
+                        ylxd: true,
+                        wx: false,
+                        ios: os == 'ios',
+                        android: os == 'android',
+                        version: version
+                    }
+                } else if (ua.indexOf('uzgapp/') > 0) {
+                    version = ua.sliceAfter('uzgapp/').split('_')[3];
+                    os = ua.sliceAfter('uzgapp/').sliceBefore('_');
+                    return {
+                        uzg: true,
+                        wx: false,
+                        ios: os == 'ios',
+                        android: os == 'android',
+                        version: version
+                    }
+                } else {
+                    return {
+                        ule: false,
+                        uzg: false,
+                        ylxd: false,
+                        wx: ua.match(/micromessenger/i),
+                        ios: ua.match(/(iphone|ipod|ipad);?/i),
+                        android: ua.match(/android/i)
+                    }
+                }
+            },
+            //小程序跳转vi页面
+            miniProgram_navigateTo(id) {
+                wx.miniProgram.navigateTo({
+                    url: '/pages/vi?id=' + id
+                })
             },
         };
 

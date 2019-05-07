@@ -1,11 +1,25 @@
 /*
+ * @Description: 使用示例
+this.HTTP.getBar().then((res) => {
+    console.log(res)
+}).catch(err=>{
+    console.log(err);
+});
+ * @version: 
+ * @Company: ule.com
+ * @Author: ailin
+ * @LastEditors: ailin
+ * @Date: 2019-04-30 17:05:58
+ * @LastEditTime: 2019-05-07 11:37:42
+ */
+/*
  * @Description: 所有http请求公用方法
  * @version: 
  * @Company: ule.com
  * @Author: ailin
  * @LastEditors: ailin
  * @Date: 2019-04-28 14:27:20
- * @LastEditTime: 2019-04-30 17:17:58
+ * @LastEditTime: 2019-05-07 11:33:30
  */
 import resource from '../../../resource';
 import * as URL from './url.js'
@@ -62,6 +76,22 @@ export default {
                 })
 
             },
+            //判断是否为小程序环境
+            isminiProgram() {
+                if (Vue.prototype.BASE.$browser().wx) {
+                    return new Promise((resolve, reject) => {
+                        wx.miniProgram.getEnv((res) => {
+                            if (res.miniprogram) {
+                                resolve(true);
+                            } else {
+                                resolve(false);
+                            }
+                        }).catch(err => {
+                            reject(err);
+                        })
+                    })
+                }
+            }
         };
 
     }

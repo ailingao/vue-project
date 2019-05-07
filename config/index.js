@@ -11,8 +11,15 @@ module.exports = {
         // Paths
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
-        proxyTable: {},
-
+        // proxyTable: {
+        //     '/NAMS_mobile': {
+        //         target: 'http://192.168.20.100:9091', // 陈博
+        //         changeOrigin: true,
+        //         pathRewrite: {
+        //         '^/NAMS_mobile': '/NAMS_mobile'
+        //         }
+        //     }
+        // },
         // Various Dev Server settings
         host: 'localhost', // can be overwritten by process.env.HOST
         port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined

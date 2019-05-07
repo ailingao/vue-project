@@ -6,17 +6,24 @@
     <div @click="getCoupon">点击领券</div>
     <div @click="to">去第二个页面</div>
     <coupon-alert v-if="alertState" :alertData="alertData" @handlerClick="close"></coupon-alert>
+    <back-top></back-top>
+    <down-load></down-load>
+    <minprog-alert v-show="minAlertState" @minprogState="minprogState"></minprog-alert>
   </div>
 </template>
 
 <script>
 import * as url from '../../../../commom/assets/js/url';
-import couponAlert from '../../../../commom/components/coupon-alert'
+import couponAlert from '../../../../commom/components/coupon-alert';
+import backTop from '../../../../commom/components/back-top';
+import downLoad from '../../../../commom/components/down-load';
+import minprogAlert from '../../../../commom/components/minProgress-alert';
 export default {
     data () {
       return {
         alertState:false,
         alertData:'',
+        minAlertState:false,//小程序弹框状态
       }
     },
     created(){
@@ -49,10 +56,13 @@ export default {
       },
       close(data){
         this.alertState=data;
+      },
+      minprogState(data){
+        this.minAlertState=data;
       }
     },
     components:{
-      couponAlert
+      couponAlert,backTop,downLoad,minprogAlert
     }
     
 }
@@ -60,4 +70,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.app{
+  height: 2000px;
+}
 </style>

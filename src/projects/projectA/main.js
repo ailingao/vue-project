@@ -9,6 +9,9 @@ import vuescroll from 'vuescroll';
 // import Mock from './mockJS/mock.js';
 import BASE from '../../commom/assets/js/global.js'; //全局公用方法
 import HTTP from '../../commom/assets/js/http.js'; //全局公用http请求
+import Vuex from 'vuex'
+import store from './store'
+Vue.use(Vuex)
 Vue.use(VueLazyload, {
     preload: 1.3, //预加载的宽高
     loading: 'https://i0.ulecdn.com/ulewap/i/290x290x2x.png',
@@ -20,6 +23,7 @@ Vue.use(vuescroll, {
     ops: {}, // 在这里设置全局默认配置
     name: 'myScroll' // 在这里自定义组件名字，默认是vueScroll
 });
+Vue.prototype.BASE = BASE;
 Vue.use(BASE);
 Vue.use(HTTP);
 Vue.config.productionTip = false
@@ -27,6 +31,7 @@ new Vue({
     el: '#app',
     router,
     resource,
+    store,
     components: { App },
     template: '<App/>'
 })

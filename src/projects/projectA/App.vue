@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style="downLoadState?'margin-top:64px;':''">
     <router-view/>
   </div>
 </template>
@@ -74,21 +74,20 @@ export default {
   },
   mounted(){
     var that = this;
-    that.sollTop(); //返回顶部
     //Start 是否APP打开页面
-    that.downloadHtml()
+    // that.downloadHtml()
     if (!($.browser.ule || $.browser.uzg || $.browser.ylxd) && location.href.indexOf('client=mobile') > 0) {
         that.autoOpenUleApp('ule')
     }
     $(".downloadBtn").on('click', function() {
         that.autoOpenUleApp('ule', 'pagetype')
     });
-    that.scrollEvent()
-    $(window).scroll(function(event) {
-        if (!(that.hideDownApp)) {
-            that.scrollEvent()
-        }
-    });
+    // that.scrollEvent()
+    // $(window).scroll(function(event) {
+    //     if (!(that.hideDownApp)) {
+    //         that.scrollEvent()
+    //     }
+    // });
 
     if ($.browser.ule || $.browser.uzg || $.browser.ylxd) {
         $('.download').hide();
@@ -127,6 +126,11 @@ export default {
             this.hrefLink = this.shopurl.uleH;
         }
     }
+  },
+  computed:{
+      downLoadState(){
+          return this.$store.getters.dowmLoadState;
+      }
   },
   methods:{
     // 头部导航
@@ -251,20 +255,6 @@ export default {
             }
         }, function(response) {
             m.storeId = 'null';
-        })
-    },
-    //  滚动到头部按钮
-    sollTop: function() {
-        $(window).scroll(function() {
-            var wt2 = $(window).scrollTop();
-            if (wt2 > 800) {
-                $(".fixed_btn").addClass("fixed_show")
-            } else {
-                $(".fixed_btn").removeClass("fixed_show")
-            }
-        });
-        $(".go_back").click(function() {
-            $("html, body").scrollTop(0)
         })
     },
     //直接跳转参数传一个，点击跳转参数传两个
