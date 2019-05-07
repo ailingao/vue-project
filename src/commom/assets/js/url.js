@@ -43,4 +43,5 @@ export const couponList = 'https://prize.' + doMain + '/mc/m/api/v3/base/coupon/
     };
  * @return: 
  */
-export const receiveCoupon = 'https://prize.' + doMain + '/mc/m/api/v3/base/coupon/receiveActivityCoupon'
+export const receiveCoupon = 'https://prize.' + doMain + '/mc/m/api/v3/base/coupon/receiveActivityCoupon';
+export const cookieInfo = '//my.' + doMain + '/usr/getIndexCookies.do';

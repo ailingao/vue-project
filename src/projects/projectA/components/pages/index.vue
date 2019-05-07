@@ -1,5 +1,6 @@
 <template>
   <div class="app">
+    <app-head></app-head>
     <div class="main">我是第一个活动</div>
     <div class="button">显示列表4445555</div>
     <h1>3333</h1>
@@ -18,6 +19,7 @@ import couponAlert from '../../../../commom/components/coupon-alert';
 import backTop from '../../../../commom/components/back-top';
 import downLoad from '../../../../commom/components/down-load';
 import minprogAlert from '../../../../commom/components/minProgress-alert';
+import appHead from '../../../../commom/components/app-head'
 export default {
     data () {
       return {
@@ -27,7 +29,6 @@ export default {
       }
     },
     created(){
-      
     },
     methods:{
       to(){
@@ -62,7 +63,7 @@ export default {
       }
     },
     components:{
-      couponAlert,backTop,downLoad,minprogAlert
+      couponAlert,backTop,downLoad,minprogAlert,appHead
     }
     
 }

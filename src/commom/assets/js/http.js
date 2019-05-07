@@ -10,7 +10,7 @@ this.HTTP.getBar().then((res) => {
  * @Author: ailin
  * @LastEditors: ailin
  * @Date: 2019-04-30 17:05:58
- * @LastEditTime: 2019-05-07 11:37:42
+ * @LastEditTime: 2019-05-07 16:49:52
  */
 /*
  * @Description: 所有http请求公用方法
@@ -56,7 +56,7 @@ export default {
             getCoupon() { //点击领券
                 return new Promise((resolve, reject) => {
                     var channels;
-                    if ($.browser.ule) {
+                    if (Vue.prototype.BASE.$browser().ule) {
                         channels = '300000'
                     } else {
                         channels = '400000'
@@ -91,6 +91,16 @@ export default {
                         })
                     })
                 }
+            },
+            //获取用户信息
+            getUserId() {
+                return new Promise((resolve, reject) => {
+                    Vue.http.jsonp(URL.cookieInfo, { jsonp: "jsonCallBack", jsonpCallback: 'js12' }).then(function(response) {
+                        resolve(res);
+                    }).catch(err => {
+                        reject(err);
+                    })
+                })
             }
         };
 

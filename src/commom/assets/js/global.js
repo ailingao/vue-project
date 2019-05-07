@@ -5,7 +5,7 @@
  * @Author: ailin
  * @LastEditors: ailin
  * @Date: 2019-04-30 17:05:58
- * @LastEditTime: 2019-05-07 13:21:39
+ * @LastEditTime: 2019-05-07 17:07:15
  */
 export default {
     install(Vue, options) {
@@ -350,6 +350,56 @@ export default {
                     url: '/pages/vi?id=' + id
                 })
             },
+            //app跳转方法直接跳转参数传一个，点击跳转参数传两个
+            autoOpenUleApp: function(apptype, pagetype) {
+                var title = document.title;
+                var pageUrl = location.href.sliceAfter('com');
+                var myUrl = pageUrl.replace(/client=mobile&?|&?client=mobile/, '');
+                var uleUrl = location.host.substring(location.host.indexOf('.') + 1);
+                if (apptype == 'ule') {
+                    if (Vue.prototype.BASE.$browser().android) {
+                        var schemes = 'ulebuy://ProductActivity&&wgt.ProductDetail&&url::https://' + uleUrl + myUrl + '##title::' + title;
+                        if (arguments.length == 2) {
+                            setTimeout(function() {
+                                window.location = '//a.app.qq.com/o/simple.jsp?pkgname=com.tom.ule.ui&g_f=994283';
+                            }, 2000);
+                        }
+                        var s = document.createElement("div");
+                        s.style.visibility = "hidden";
+                        s.innerHTML = '<iframe src="' + schemes + '" scrolling="no" width="1" height="1"></iframe>';
+                        document.body.appendChild(s);
+                    } else {
+                        var link = 'ulebuy://WEBVIEW%%%hideNavgationBar^^^0///title^^^' + title + '///key^^^https://' + uleUrl + myUrl + '///hasxib^^^0'
+                        if (arguments.length == 2) {
+                            setTimeout(function() {
+                                window.location = '//a.app.qq.com/o/simple.jsp?pkgname=com.tom.ule.ui&g_f=994283';
+                            }, 2000);
+                        }
+                        window.location.href = encodeURI(link);
+                    }
+                }
+            },
+            share(tit, con) {
+                var wholeWhare = { "title": tit, "content": con };
+                var userOnlyId = '';
+                /* 全局调用 分享 */
+                var shareCall = function() {
+                    var title = wholeWhare.title,
+                        content = wholeWhare.content,
+                        imgUrl = "https://i0.ulecdn.com/i/event/2018/0511/duanwu/logo2.png",
+                        // 需获取url
+                        linkUrl = location.href + '?client=app_ylxd&storeid=' + userOnlyId;
+                    var linkStr = title + "##" + content + "##" + imgUrl + "##" + linkUrl + "&&WX##WF##QQ";
+                    if (Vue.prototype.BASE.$browser().android) {
+                        window.group.jsMethod(linkStr);
+                    } else if (Vue.prototype.BASE.$browser().ios) {
+                        return linkStr;
+                    } else {
+                        return linkStr;
+                    }
+                };
+                window.shareCall = shareCall;
+            }
         };
 
     }

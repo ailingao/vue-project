@@ -6,7 +6,7 @@
  * @Author: ailin
  * @LastEditors: ailin
  * @Date: 2019-04-29 13:17:54
- * @LastEditTime: 2019-05-07 13:09:48
+ * @LastEditTime: 2019-05-07 15:13:01
  -->
 <template>
   <div class="download" v-show="isShow" :style="top?'':'top:0;'">
@@ -17,7 +17,7 @@
         <p>下载邮乐app</p>
         <p>立享新人礼包115元</p>
       </div>
-      <a href="javascript://" class="downloadBtn active" title="立即下载">立即下载</a>
+      <a href="javascript://" class="downloadBtn active" title="立即下载" @click="download">立即下载</a>
       <em id="close" @click="close">×</em>
     </div>
   </div>
@@ -55,7 +55,7 @@ export default {
         }
       },
       init(){
-        if ($.browser.ule || $.browser.uzg || $.browser.ylxd) {
+        if (this.BASE.$browser().ule || this.BASE.$browser().uzg || this.BASE.$browser().ylxd) {
           this.isShow=false;
         }
         if (location.href.indexOf('client=app_ylxd') > 0) {
@@ -64,6 +64,9 @@ export default {
         if (location.href.indexOf('ishead=false') > 0) {
           this.top=false;
         }
+      },
+      download(){
+        this.BASE.autoOpenUleApp('ule', 'pagetype')
       }
     },
     destroyed: function () {
