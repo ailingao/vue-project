@@ -1,13 +1,22 @@
 <template>
   <div id="app" :style="downLoadState?'margin-top:64px;':''">
-    <router-view/>
+    <app-head></app-head>
+      <!-- 根据路由设置判断需要缓存的页面 -->
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
+    <back-top></back-top>
+    <down-load></down-load>
   </div>
 </template>
 
 <script>
 import "../../commom/assets/js/zepto_yl.min.js";
-import * as URL from '../../commom/assets/js/url.js'
-
+import * as URL from '../../commom/assets/js/url.js';
+import backTop from '../../commom/components/back-top';
+import downLoad from '../../commom/components/down-load';
+import appHead from '../../commom/components/app-head'
 (function(doc, win) { // rem 自适应
     var defaulfFontSize = '85.3333333px';
     var docEl = doc.documentElement,
@@ -119,6 +128,9 @@ export default {
         });
     },
   },
+  components:{
+      appHead,backTop,downLoad
+  }
 }
 </script>
 

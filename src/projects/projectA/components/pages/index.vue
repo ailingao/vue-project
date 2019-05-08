@@ -1,14 +1,11 @@
 <template>
   <div class="app">
-    <app-head></app-head>
     <div class="main">我是第一个活动</div>
     <div class="button">显示列表4445555</div>
     <h1>3333</h1>
     <div @click="getCoupon">点击领券</div>
     <div @click="to">去第二个页面</div>
     <coupon-alert v-if="alertState" :alertData="alertData" @handlerClick="close"></coupon-alert>
-    <back-top></back-top>
-    <down-load></down-load>
     <minprog-alert v-show="minAlertState" @minprogState="minprogState"></minprog-alert>
   </div>
 </template>
@@ -16,10 +13,8 @@
 <script>
 import * as url from '../../../../commom/assets/js/url';
 import couponAlert from '../../../../commom/components/coupon-alert';
-import backTop from '../../../../commom/components/back-top';
-import downLoad from '../../../../commom/components/down-load';
 import minprogAlert from '../../../../commom/components/minProgress-alert';
-import appHead from '../../../../commom/components/app-head'
+
 export default {
     data () {
       return {
@@ -29,6 +24,7 @@ export default {
       }
     },
     created(){
+      console.log('1111')
     },
     methods:{
       to(){
@@ -63,7 +59,7 @@ export default {
       }
     },
     components:{
-      couponAlert,backTop,downLoad,minprogAlert,appHead
+      couponAlert,minprogAlert,
     }
     
 }

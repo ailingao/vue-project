@@ -11,10 +11,12 @@ export default new Router({
     routes: [{
         path: '/index',
         name: 'index',
-        component: index
+        component: index,
+        meta: { keepAlive: true }
     }, {
         path: '/two',
         name: 'two',
-        component: two
+        component: two,
+        meta: { keepAlive: false }
     }]
 })

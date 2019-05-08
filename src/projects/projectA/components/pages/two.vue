@@ -20,7 +20,7 @@ export default {
       }
     },
     created(){
-      
+      console.log('2222')
     },
     methods:{
       to(){
