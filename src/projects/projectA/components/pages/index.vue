@@ -7,6 +7,7 @@
     <div @click="to">去第二个页面</div>
     <coupon-alert v-if="alertState" :alertData="alertData" @handlerClick="close"></coupon-alert>
     <minprog-alert v-show="minAlertState" @minprogState="minprogState"></minprog-alert>
+    <input type="text" v-model="test">
   </div>
 </template>
 
@@ -21,6 +22,7 @@ export default {
         alertState:false,
         alertData:'',
         minAlertState:false,//小程序弹框状态
+        test:'',
       }
     },
     created(){
